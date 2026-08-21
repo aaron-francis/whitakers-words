@@ -61,7 +61,7 @@ this workflow.
 |---|---|
 | [PR #4](https://github.com/aaron-francis/whitakers-words/pull/4) — `Roman_Number` → Java | **Proven.** 960,799 inputs, 0 divergences. Bounded domain, fully enumerated. |
 | [PR #5](https://github.com/aaron-francis/whitakers-words/pull/5) — `Strings_Package` → Java | **Evidence.** 200,000 samples, 0 divergences. Unbounded domain — labelled accordingly. |
-| [RUN-C-BLOCKED.md](RUN-C-BLOCKED.md) — added a contradictory requirement | **Blocked.** Built the oracle, ran all 960,799, found exactly 2 divergences, stopped. No PR, nothing committed. |
+| [REFUSED-CONTRADICTORY-REQUIREMENT.md](REFUSED-CONTRADICTORY-REQUIREMENT.md) — added a contradictory requirement | **Blocked.** Built the oracle, ran all 960,799, found exactly 2 divergences, stopped. No PR, nothing committed. |
 
 Run C is the one worth reading. It was told to reject two inputs the legacy
 code accepts — a requirement that conflicts with preserving behavior. It did
