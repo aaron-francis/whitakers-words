@@ -1,4 +1,4 @@
-# Run C — blocked
+# Refused — a requirement that contradicted the policy
 
 A run of the migration playbook where one added acceptance criterion
 contradicted the locked policy. The agent opened no pull request and committed
