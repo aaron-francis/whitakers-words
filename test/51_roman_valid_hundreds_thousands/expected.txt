@@ -1,0 +1,63 @@
+c                    N      9 8 X   X M                 
+C., abb.  N M   [XXXCO]  
+Gaius (Roman praenomen); (abb. C.); (abb. for) centum/100;
+C                    NUM    2 0 X   X X CARD            
+100  as a ROMAN NUMERAL;
+
+
+=>
+CXL                  NUM    2 0 X   X X CARD            
+140  as a ROMAN NUMERAL;
+
+
+=>
+CD                   NUM    2 0 X   X X CARD            
+400  as a ROMAN NUMERAL;
+
+
+=>
+d                    N      9 8 X   X M                 
+D., abb.  N M   [CXIEO]    Classic  uncommon
+Decimus (Roman praenomen); (abb. D.);
+Dominus, Lord; abb. D; [calendar AD/Anno Domini => in the year of our Lord];
+d                    N      9 8 X   X C                 
+d., abb.  N C   [XXXCS]  
+diem, abb. d; in calendar expression a. d. = ante diem = before the day;
+d                    ADJ    9 8 X   X X POS             
+d., abb.  ADJ   [XLXIO]    inscript
+obliged; bound (to pay), condemned to pay; sentenced; (abb. d. in inscription);
+D                    NUM    2 0 X   X X CARD            
+500  as a ROMAN NUMERAL;
+
+
+=>
+CM                   NUM    2 0 X   X X CARD            
+900  as a ROMAN NUMERAL;
+
+
+=>
+m                    N      9 8 X   X M                 
+M., abb.  N M   [XXXDO]    lesser
+Manius (Roman praenomen); (abb. M'.);
+Marcus (Roman praenomen); (abb. M.); (also) maximus, mille, milia, municipium;
+M                    NUM    2 0 X   X X CARD            
+1000  as a ROMAN NUMERAL;
+
+
+=>
+MDCLXVI              NUM    2 0 X   X X CARD            
+1666  as a ROMAN NUMERAL;
+
+
+=>
+MCMXCIX              NUM    2 0 X   X X CARD            
+1999  as a ROMAN NUMERAL;
+
+
+=>
+MMXXV                NUM    2 0 X   X X CARD            
+2025  as a ROMAN NUMERAL;
+
+
+=>Raised END_ERROR, although in STANDARD_INPUT
+^Z is inappropriate keyboard Input, WORDS should be terminated with a blank line

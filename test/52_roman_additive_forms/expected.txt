@@ -1,0 +1,36 @@
+IIII                 NUM    2 0 X   X X CARD            
+4  as a ROMAN NUMERAL;
+
+
+=>
+VIIII                NUM    2 0 X   X X CARD            
+9  as a ROMAN NUMERAL;
+
+
+=>
+XXXX                 NUM    2 0 X   X X CARD            
+40  as a ROMAN NUMERAL;
+
+
+=>
+LXXXX                NUM    2 0 X   X X CARD            
+90  as a ROMAN NUMERAL;
+
+
+=>
+CCCC                 NUM    2 0 X   X X CARD            
+400  as a ROMAN NUMERAL;
+
+
+=>
+DCCCC                NUM    2 0 X   X X CARD            
+900  as a ROMAN NUMERAL;
+
+
+=>
+MMMM                 NUM    2 0 X   X X CARD            
+4000  as a ROMAN NUMERAL;
+
+
+=>Raised END_ERROR, although in STANDARD_INPUT
+^Z is inappropriate keyboard Input, WORDS should be terminated with a blank line

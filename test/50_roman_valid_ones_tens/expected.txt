@@ -1,0 +1,62 @@
+i                    V      6 1 PRES ACTIVE  IMP 2 S    
+eo, ire, ivi(ii), itus  V   [XXXAX]  
+go, walk; march, advance; pass; flow; pass (time); ride; sail;
+i                    PRON   4 2 NOM S M                 
+i                    PRON   4 2 NOM S N                 
+i                    PRON   4 2 ACC S N                 
+idem, eadem, idem  PRON   [XXXAX]  
+(w/-dem ONLY, idem, eadem, idem) same, the same, the very same, also;
+I                    NUM    2 0 X   X X CARD            
+1  as a ROMAN NUMERAL;
+
+
+=>
+IV                   NUM    2 0 X   X X CARD            
+4  as a ROMAN NUMERAL;
+
+
+=>
+V                    NUM    2 0 X   X X CARD            
+5  as a ROMAN NUMERAL;
+
+
+=>
+IX                   NUM    2 0 X   X X CARD            
+9  as a ROMAN NUMERAL;
+
+
+=>
+X                    NUM    2 0 X   X X CARD            
+10  as a ROMAN NUMERAL;
+
+
+=>
+XIV                  NUM    2 0 X   X X CARD            
+14  as a ROMAN NUMERAL;
+
+
+=>
+XL                   NUM    2 0 X   X X CARD            
+40  as a ROMAN NUMERAL;
+
+
+=>
+XLIX                 NUM    2 0 X   X X CARD            
+49  as a ROMAN NUMERAL;
+
+
+=>
+l                    N      9 8 X   X M                 
+L., abb.  N M   [XXXDX]    lesser
+Lucius (Roman praenomen); (abb. L.);
+L                    NUM    2 0 X   X X CARD            
+50  as a ROMAN NUMERAL;
+
+
+=>
+XC                   NUM    2 0 X   X X CARD            
+90  as a ROMAN NUMERAL;
+
+
+=>Raised END_ERROR, although in STANDARD_INPUT
+^Z is inappropriate keyboard Input, WORDS should be terminated with a blank line
