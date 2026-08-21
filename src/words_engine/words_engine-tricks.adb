@@ -251,6 +251,48 @@ package body Words_Engine.Tricks is
 
    end Syncope;
 
+   generic
+      with procedure Flip_Flop_Operation
+        (X1, X2 : String; Explanation : String := "");
+      with procedure Flip_Operation
+        (X1, X2 : String; Explanation : String := "");
+      with procedure Internal_Operation
+        (X1, X2 : String; Explanation : String := "");
+      with procedure Slur_Operation
+        (X1 : String; Explanation : String := "");
+      with function Current_Pa_Last return Integer;
+   function Iter_Tricks_Generic (TT : TricksT) return Boolean;
+
+   function Iter_Tricks_Generic (TT : TricksT) return Boolean
+   is
+   begin
+      for T in TT'Range loop
+         case TT (T).Op is
+            when TC_Flip_Flop =>
+               Flip_Flop_Operation (
+                 To_String (TT (T).FF1),
+                 To_String (TT (T).FF2));
+            when TC_Flip =>
+               Flip_Operation (
+                 To_String (TT (T).FF3),
+                 To_String (TT (T).FF4));
+            when TC_Internal =>
+               Internal_Operation (
+                 To_String (TT (T).I1),
+                 To_String (TT (T).I2));
+            when TC_Slur =>
+               Slur_Operation (
+                 To_String (TT (T).S1));
+         end case;
+
+         if Current_Pa_Last > TT (T).Max then
+            return True;
+         end if;
+      end loop;
+
+      return False;
+   end Iter_Tricks_Generic;
+
    procedure Try_Tricks
      (W           : String;
       Pa          : in out Parse_Array;
@@ -655,39 +697,24 @@ package body Words_Engine.Tricks is
          --  sloppy
       end Two_Words;
 
-      -- FIXME: next two declarations (Finished and Iter_Tricks) duplicated
-      -- entirely, pending reintegration
-      Finished : Boolean := False;
-
-      procedure Iter_Tricks (TT : TricksT)
+      procedure Slur_Operation_Unavailable
+        (X1 : String; Explanation : String := "")
       is
       begin
-         for T in TT'Range loop
-            case TT (T).Op is
-               when TC_Flip_Flop =>
-                  Flip_Flop (
-                    To_String (TT (T).FF1),
-                    To_String (TT (T).FF2));
-               when TC_Flip =>
-                  Flip (
-                    To_String (TT (T).FF3),
-                    To_String (TT (T).FF4));
-               when TC_Internal =>
-                  Internal (
-                    To_String (TT (T).I1),
-                    To_String (TT (T).I2));
-               when TC_Slur =>
-                  raise Tricks_Exception;
-            end case;
+         raise Tricks_Exception;
+      end Slur_Operation_Unavailable;
 
-            if Pa_Last > TT (T).Max then
-               Finished := True;
-               return;
-            end if;
-         end loop;
+      function Current_Pa_Last return Integer is
+      begin
+         return Pa_Last;
+      end Current_Pa_Last;
 
-         Finished := False;
-      end Iter_Tricks;
+      function Iter_Tricks is new Iter_Tricks_Generic
+        (Flip_Flop_Operation => Flip_Flop,
+         Flip_Operation => Flip,
+         Internal_Operation => Internal,
+         Slur_Operation => Slur_Operation_Unavailable,
+         Current_Pa_Last => Current_Pa_Last);
 
    begin
       --  These things might be genericized, at least the PA (1) assignments
@@ -726,8 +753,7 @@ package body Words_Engine.Tricks is
 
          when 'a' | 'd' | 'e' | 'f' | 'g' | 'h' | 'k' | 'l' | 'm' | 'n' |
               'o' | 'p' | 's' | 't' | 'u' | 'y' | 'z' =>
-            Iter_Tricks (Get_Tricks_Table (S (S'First)));
-            if Finished then
+            if Iter_Tricks (Get_Tricks_Table (S (S'First))) then
                return;
             end if;
          when others =>
@@ -735,8 +761,7 @@ package body Words_Engine.Tricks is
 
       end case;   --  case on first letter
 
-      Iter_Tricks (Any_Tricks);
-      if Finished then
+      if Iter_Tricks (Any_Tricks) then
          return;
       end if;
 
@@ -749,8 +774,7 @@ package body Words_Engine.Tricks is
 
       if Words_Mdev (Do_Medieval_Tricks)  then
          --      Medieval  ->  Classic
-         Iter_Tricks (Mediaeval_Tricks);
-         if Finished then
+         if Iter_Tricks (Mediaeval_Tricks) then
             return;
          end if;
 
@@ -1008,38 +1032,24 @@ package body Words_Engine.Tricks is
          end if;
          Pa_Last := Pa_Save;
       end Slur;
-      -- FIXME: next two declarations (Finished and Iter_Tricks) duplicated
-      -- entirely, pending reintegration
-      Finished : Boolean := False;
-
-      procedure Iter_Tricks (TT : TricksT)
+      procedure Internal_Operation_Unavailable
+        (X1, X2 : String; Explanation : String := "")
       is
       begin
-         for T in TT'Range loop
-            case TT (T).Op is
-               when TC_Flip_Flop =>
-                  Flip_Flop (
-                    To_String (TT (T).FF1),
-                    To_String (TT (T).FF2));
-               when TC_Flip =>
-                  Flip (
-                    To_String (TT (T).FF3),
-                    To_String (TT (T).FF4));
-               when TC_Internal =>
-                  raise Tricks_Exception;
-               when TC_Slur =>
-                  Slur (
-                    To_String (TT (T).S1));
-            end case;
+         raise Tricks_Exception;
+      end Internal_Operation_Unavailable;
 
-            if Pa_Last > TT (T).Max then
-               Finished := True;
-               return;
-            end if;
-         end loop;
+      function Current_Pa_Last return Integer is
+      begin
+         return Pa_Last;
+      end Current_Pa_Last;
 
-         Finished := False;
-      end Iter_Tricks;
+      function Iter_Tricks is new Iter_Tricks_Generic
+        (Flip_Flop_Operation => Flip_Flop,
+         Flip_Operation => Flip,
+         Internal_Operation => Internal_Operation_Unavailable,
+         Slur_Operation => Slur,
+         Current_Pa_Last => Current_Pa_Last);
 
    begin
 
@@ -1050,8 +1060,7 @@ package body Words_Engine.Tricks is
       case S (S'First) is
 
          when 'a' | 'c' | 'i' | 'n' | 'o' | 'q' | 's' =>
-            Iter_Tricks (Get_Slur_Tricks_Table (S (S'First)));
-            if Finished then
+            if Iter_Tricks (Get_Slur_Tricks_Table (S (S'First))) then
                return;
             end if;
          when others =>
