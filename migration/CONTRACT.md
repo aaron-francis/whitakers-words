@@ -21,16 +21,6 @@ An **implementation** is an executable. It:
 `Roman_Number` it is the decimal value of the numeral, or `0` if the input is
 not a well-formed Roman numeral.
 
-## Why an executable and not a library
-
-Because the two sides are in different languages, the only boundary both can
-meet at is a process. This is also the boundary a fielded system is observed
-at — messages in, messages out — so a proof at this boundary is a proof about
-the thing that actually matters, not about internal structure.
-
-It also means the contract is language-agnostic. Java, Go, Rust, C++ — the
-harness does not know or care which one is on either side.
-
 ## The two verification modes
 
 **Exhaustive.** Where the input domain is bounded, do not sample it. Enumerate
@@ -43,6 +33,3 @@ that domain.
 exhaustiveness is impossible. Generate a large structured corpus, state the
 sampling strategy explicitly, and report coverage honestly. A corpus result is
 evidence, not proof, and must be labelled as such.
-
-Claiming exhaustiveness for a corpus run is the one unrecoverable error in
-this workflow.
