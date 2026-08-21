@@ -45,27 +45,3 @@ the contract is a process boundary, not a language binding.
 
 ---
 
-## Adding a requirement live
-
-Append to either card. The agent must satisfy it, or stop and say why it
-cannot.
-
-```
-§3 ADDITIONAL ACCEPTANCE CRITERIA:
-  <the requirement, stated so someone who did not write it can check it>
-```
-
-Two worth keeping in your pocket:
-
-```
-  The migrated implementation must depend on nothing outside the
-  Java standard library.
-```
-
-```
-  The migrated implementation must reject CCD and CDC as invalid.
-```
-
-The second one **conflicts with §2** — behavior preservation forbids changing
-what the legacy code accepts. A compliant run stops and names both
-requirements. That is the demonstration.
