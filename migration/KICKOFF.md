@@ -33,8 +33,8 @@ Read migration/PROMPT.md and migration/CONTRACT.md and follow them exactly.
   source_module:      src/words_engine/words_engine-roman_numerals_package.adb
   source_symbol:      Roman_Number
   source_language:    Ada
-  target_language:    Javascript
-  target_location:    migration/javascript/
+  target_language:    Java
+  target_location:    migration/java/
   verification_mode:  exhaustive
   alphabet:           MDCLXVI
   max_length:         7
