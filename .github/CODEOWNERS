@@ -1,0 +1,11 @@
+# Policy files require review from the security owner.
+# Everything else follows normal review.
+#
+# The point is not that policy cannot change. It is that it cannot change
+# quietly: every edit is a reviewed diff with a name on it.
+
+/migration/PROMPT.md              @aaron-francis
+/migration/PROMPT-characterize.md @aaron-francis
+/migration/PROMPT-security.md     @aaron-francis
+/migration/CONTRACT.md            @aaron-francis
+/migration/harness/               @aaron-francis
