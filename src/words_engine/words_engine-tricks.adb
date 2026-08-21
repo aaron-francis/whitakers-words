@@ -71,6 +71,49 @@ package body Words_Engine.Tricks is
                                Head (Integer'Image (Word_Number), 4) &
            "   " & Head (W, 20) & "   " & Pa (Pa_Save + 1).Stem);
       end Explain_Syncope;
+
+      --  Scan S from the right for a fragment in Fragments; on a match,
+      --  record a syncope parse record, insert Insertion after the match
+      --  position, and re-run WORD on the restored form.  If the result is
+      --  a perfect-system verb, explain it and set Explained; otherwise
+      --  leave Pa_Last for the caller to inspect or restore.
+      procedure Try_Branch (Fragments        : Strings;
+                            Loop_First       : Integer;
+                            Loop_Last        : Integer;
+                            Insertion        : String;
+                            Stem_Label       : Stem_Type;
+                            Explanatory_Text : String;
+                            Stat_Text        : String;
+                            Explained        : out Boolean)
+      is
+         Fragment_Length : constant Natural :=
+           Length (Fragments (Fragments'First));
+      begin
+         Explained := False;
+         for I in reverse Loop_First .. Loop_Last  loop
+            if Member (+S (I .. I + Fragment_Length - 1), Fragments)
+            then
+               Pa_Last := Pa_Last + 1;
+               Pa (Pa_Last) := (Stem_Label, Syncope_Inflection_Record,
+                 Yyy, Null_MNPC);
+               Word (S (S'First .. I) & Insertion & S (I + 1 .. S'Last),
+                 Pa, Pa_Last);
+               if Pa_Last > Pa_Save + 1  then
+                  exit;               --  Exit loop here if SYNCOPE found hit
+               end if;
+            end if;
+            Pa_Last := Pa_Save;     --  No luck, or it would have exited above
+         end loop;
+         if Pa_Last > Pa_Save + 1  and then
+           Pa (Pa_Last).IR.Qual.Pofs = V and then
+           Pa (Pa_Last).IR.Key = 3
+         then          --  Perfect system
+            Explain_Syncope (Explanatory_Text, Stat_Text);
+            Explained := True;
+         end if;
+      end Try_Branch;
+
+      Explained : Boolean := False;
    begin
 
       --  Syncopated forms (see Gildersleeve and Lodge, 131)
@@ -81,162 +124,85 @@ package body Words_Engine.Tricks is
       --  ivi  => ii ,  in perfect  (esp. for V 3 4)
       --  This is handled in WORDS as syncope
       --  It seems to appear in texts as alternative stems  ii and ivi
-      for I in reverse S'First .. S'Last - 1  loop
-         if S (I .. I + 1) = "ii" then
-            Pa_Last := Pa_Last + 1;
-            Pa (Pa_Last) := ("Syncope  ii => ivi", Syncope_Inflection_Record,
-              Yyy, Null_MNPC);
-            Word (S (S'First .. I) & "v" & S (I + 1 .. S'Last), Pa, Pa_Last);
-            if Pa_Last > Pa_Save + 1  then
-               exit;
-            end if;
-         end if;
-         Pa_Last := Pa_Save;     --  No luck, or it would have exited above
-      end loop;
-      if Pa_Last > Pa_Save + 1  and then
-        Pa (Pa_Last).IR.Qual.Pofs = V and then
-        --PA (PA_LAST).IR.QUAL.V.CON = (3, 4)/(6, 1) and then
-        Pa (Pa_Last).IR.Key = 3
-      then          --  Perfect system
-         Explain_Syncope
-           ("Syncopated perfect ivi can drop 'v' without contracting vowel ",
-           " SYNCOPE  ivi at ");
+      Try_Branch
+        (Fragments        => (1 => +"ii"),
+         Loop_First       => S'First,
+         Loop_Last        => S'Last - 1,
+         Insertion        => "v",
+         Stem_Label       => "Syncope  ii => ivi",
+         Explanatory_Text =>
+           "Syncopated perfect ivi can drop 'v' without contracting vowel ",
+         Stat_Text        => " SYNCOPE  ivi at ",
+         Explained        => Explained);
+      if Explained then
          return;
       else
          Pa_Last := Pa_Save;
       end if;
 
       -- avis => as, evis => es, ivis => is, ovis => os   in perfect
-      for I in reverse S'First .. S'Last - 2  loop     --  Need isse
-         declare
-            Fragment  : constant String  := S (I .. I + 1);
-            Fragments : constant Strings := (+"as", +"es", +"is", +"os");
-         begin
-            if Member (+Fragment, Fragments)
-            then
-               Pa_Last := Pa_Last + 1;
-               Pa (Pa_Last)         :=
-                 ("Syncope   s => vis", Syncope_Inflection_Record,
-                 Yyy, Null_MNPC);
-               Word (S (S'First .. I) & "vi" & S (I + 1 .. S'Last),
-                 Pa, Pa_Last);
-               if Pa_Last > Pa_Save + 1  then
-                  exit;               --  Exit loop here if SYNCOPE found hit
-               end if;
-            end if;
-            Pa_Last := Pa_Save;     --  No luck, or it would have exited above
-         end;
-      end loop;
-      --  Loop over the resulting solutions
-      if Pa_Last > Pa_Save + 1  and then
-        Pa (Pa_Last).IR.Qual.Pofs = V and then
-        Pa (Pa_Last).IR.Key = 3
-      then          --  Perfect system
-         Explain_Syncope
-           ("Syncopated perfect often drops the 'v' and contracts vowel ",
-            "SYNCOPE  vis at ");
-      end if;
-      --  end loop;   --  over resulting solutions
-      if Pa_Last > Pa_Save + 1  then
+      Try_Branch
+        (Fragments        => (+"as", +"es", +"is", +"os"),
+         Loop_First       => S'First,
+         Loop_Last        => S'Last - 2,       --  Need isse
+         Insertion        => "vi",
+         Stem_Label       => "Syncope   s => vis",
+         Explanatory_Text =>
+           "Syncopated perfect often drops the 'v' and contracts vowel ",
+         Stat_Text        => "SYNCOPE  vis at ",
+         Explained        => Explained);
+      if Explained or else Pa_Last > Pa_Save + 1  then
          return;
       else
          Pa_Last := Pa_Save;
       end if;
 
       -- aver => ar, ever => er, in perfect
-      for I in reverse S'First + 1 .. S'Last - 2  loop
-         declare
-            Fragment  : constant String  := S (I .. I + 1);
-            Fragments : constant Strings := (+"ar", +"er", +"or");
-         begin
-            if Member (+Fragment, Fragments)
-            then
-               Pa_Last := Pa_Last + 1;
-               Pa (Pa_Last) := ("Syncope   r => v.r", Syncope_Inflection_Record,
-                 Yyy, Null_MNPC);
-               Word (S (S'First .. I) & "ve" & S (I + 1 .. S'Last),
-                 Pa, Pa_Last);
-               if Pa_Last > Pa_Save + 1  then
-                  exit;
-               end if;
-            end if;
-            Pa_Last := Pa_Save;     --  No luck, or it would have exited above
-         end;
-      end loop;
-
-      if Pa_Last > Pa_Save + 1  and then
-        Pa (Pa_Last).IR.Qual.Pofs = V and then
-        Pa (Pa_Last).IR.Key = 3
-      then          --  Perfect system
-         Explain_Syncope
-           ("Syncopated perfect often drops the 'v' and contracts vowel ",
-            "SYNCOPE  ver at ");
+      Try_Branch
+        (Fragments        => (+"ar", +"er", +"or"),
+         Loop_First       => S'First + 1,
+         Loop_Last        => S'Last - 2,
+         Insertion        => "ve",
+         Stem_Label       => "Syncope   r => v.r",
+         Explanatory_Text =>
+           "Syncopated perfect often drops the 'v' and contracts vowel ",
+         Stat_Text        => "SYNCOPE  ver at ",
+         Explained        => Explained);
+      if Explained then
          return;
       else
          Pa_Last := Pa_Save;
       end if;
 
       -- iver => ier,  in perfect
-      for I in reverse S'First .. S'Last - 3  loop
-         if S (I .. I + 2) = "ier" then
-            Pa_Last := Pa_Last + 1;
-            Pa (Pa_Last) := ("Syncope  ier=>iver", Syncope_Inflection_Record,
-              Yyy, Null_MNPC);
-            Word (S (S'First .. I) & "v" & S (I + 1 .. S'Last), Pa, Pa_Last);
-            if Pa_Last > Pa_Save + 1  then
-               exit;
-            end if;
-         end if;
-         Pa_Last := Pa_Save;     --  No luck, or it would have exited above
-      end loop;
-      if Pa_Last > Pa_Save + 1  and then
-        Pa (Pa_Last).IR.Qual.Pofs = V and then
-        Pa (Pa_Last).IR.Key = 3
-      then          --  Perfect system
-         Explain_Syncope
-           ("Syncopated perfect often drops the 'v' and contracts vowel ",
-            "SYNCOPE  ier at ");
+      Try_Branch
+        (Fragments        => (1 => +"ier"),
+         Loop_First       => S'First,
+         Loop_Last        => S'Last - 3,
+         Insertion        => "v",
+         Stem_Label       => "Syncope  ier=>iver",
+         Explanatory_Text =>
+           "Syncopated perfect often drops the 'v' and contracts vowel ",
+         Stat_Text        => "SYNCOPE  ier at ",
+         Explained        => Explained);
+      if Explained then
          return;
       else
          Pa_Last := Pa_Save;
       end if;
 
       --         -- sis => s, xis => x, in perfect
-      for I in reverse S'First .. S'Last - 2  loop
-         declare
-            Fragment : constant Character := S (I);
-         begin
-            if (Fragment = 's')  or
-              (Fragment = 'x')
-            then
-               Pa_Last := Pa_Last + 1;
-               Pa (Pa_Last)         :=
-                 ("Syncope s/x => +is", Syncope_Inflection_Record,
-                 Yyy, Null_MNPC);
-               Word (S (S'First .. I) & "is" & S (I + 1 .. S'Last),
-                 Pa, Pa_Last);
-               if Pa_Last > Pa_Save + 1  then
-                  exit;               --  Exit loop here if SYNCOPE found hit
-               end if;
-            end if;
-            Pa_Last := Pa_Save;     --  No luck, or it would have exited above
-         end;
-      end loop;
-      --  Loop over the resulting solutions
-      if Pa_Last > Pa_Save + 1  and then
-        Pa (Pa_Last).IR.Qual.Pofs = V and then
-        Pa (Pa_Last).IR.Key = 3
-      then          --  Perfect system
-         Explain_Syncope
-           ("Syncopated perfect sometimes drops the 'is' after 's' or 'x' ",
-            "SYNCOPEx/sis at ");
-         return;
-      else
-         Pa_Last := Pa_Save;
-      end if;
-
-      --  end loop;   --  over resulting solutions
-      if Pa_Last > Pa_Save + 1  then
+      Try_Branch
+        (Fragments        => (+"s", +"x"),
+         Loop_First       => S'First,
+         Loop_Last        => S'Last - 2,
+         Insertion        => "is",
+         Stem_Label       => "Syncope s/x => +is",
+         Explanatory_Text =>
+           "Syncopated perfect sometimes drops the 'is' after 's' or 'x' ",
+         Stat_Text        => "SYNCOPEx/sis at ",
+         Explained        => Explained);
+      if Explained then
          return;
       else
          Pa_Last := Pa_Save;
