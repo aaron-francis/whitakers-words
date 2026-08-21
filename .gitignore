@@ -19,3 +19,5 @@ STEMFILE.LOC
 EWDSFILE.GEN
 STEMLIST.GEN
 src/latin_utils/latin_utils-config.adb
+migration/inputs.txt
+migration/java/classes/
