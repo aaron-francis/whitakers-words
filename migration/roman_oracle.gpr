@@ -1,0 +1,19 @@
+--  Builds the reference implementation (the oracle) from the unmodified
+--  legacy Ada sources. The only change to the legacy code is the seam: the
+--  existing Roman_Number function is declared in the package spec so it can
+--  be called. No behavior changes.
+
+with "../shared.gpr";
+with "../words_engine.gpr";
+
+project Roman_Oracle is
+
+   for Languages use ("Ada");
+   for Source_Dirs use ("ada");
+   for Main use ("roman_oracle.adb");
+   for Exec_Dir use "bin";
+   for Object_Dir use "obj";
+
+   package Compiler renames Shared.Compiler;
+
+end Roman_Oracle;
