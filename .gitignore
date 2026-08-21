@@ -19,3 +19,7 @@ STEMFILE.LOC
 EWDSFILE.GEN
 STEMLIST.GEN
 src/latin_utils/latin_utils-config.adb
+migration/ada/obj/
+migration/ada/roman_oracle
+migration/java/classes/
+migration/inputs.txt
