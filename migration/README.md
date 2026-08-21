@@ -63,7 +63,10 @@ this workflow.
 | [PR #5](https://github.com/aaron-francis/whitakers-words/pull/5) — `Strings_Package` → Java | **Evidence.** 200,000 samples, 0 divergences. Unbounded domain — labelled accordingly. |
 | [REFUSED-CONTRADICTORY-REQUIREMENT.md](REFUSED-CONTRADICTORY-REQUIREMENT.md) — added a contradictory requirement | **Blocked.** Built the oracle, ran all 960,799, found exactly 2 divergences, stopped. No PR, nothing committed. |
 
-Run C is the one worth reading. It was told to reject two inputs the legacy
+| [BLOCKED-STATEFUL-MODULE.md](BLOCKED-STATEFUL-MODULE.md) — `Syncope`, a stateful module | **Blocked.** Cannot be separated from the dictionary engine without changing behavior. Recommends migrating bottom-up instead. |
+| [SECURITY-REVIEW.md](SECURITY-REVIEW.md) — review of the migrated Java | 6 findings. A high-severity divergence the equivalence proof could not see, because it lay outside the enumerated domain. |
+
+The refusal is the one worth reading. It was told to reject two inputs the legacy
 code accepts — a requirement that conflicts with preserving behavior. It did
 not pick an interpretation. It proved the conflict was real, named both
 requirements, and handed the decision back.
