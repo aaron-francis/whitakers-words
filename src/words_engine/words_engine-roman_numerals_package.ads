@@ -21,6 +21,8 @@ package Words_Engine.Roman_Numerals_Package is
 
    function Only_Roman_Digits (S : String) return Boolean;
 
+   function Roman_Number (St : String) return Natural;
+
    function Bad_Roman_Number (S : String) return Natural;
 
    procedure Roman_Numerals
