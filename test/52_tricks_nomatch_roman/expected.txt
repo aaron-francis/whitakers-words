@@ -1,0 +1,22 @@
+Bad Roman Numeral?   
+
+iiiii                NUM    2 0 X   X X CARD              infreq  
+5  as ill-formed ROMAN NUMERAL?;
+
+
+=>
+Bad Roman Numeral?   
+
+vvv                  NUM    2 0 X   X X CARD              infreq  
+15  as ill-formed ROMAN NUMERAL?;
+
+
+=>xyzzy                          ========   UNKNOWN    
+
+
+=>qqqqq                          ========   UNKNOWN    
+
+
+=>michi                          ========   UNKNOWN    
+
+

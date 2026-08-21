@@ -1,0 +1,29 @@
+Word mod co/con      
+An initial 'co' may be rendered by 'con'
+conloc.o             V      1 1 PRES ACTIVE  IND 1 S    
+conloco, conlocare, conlocavi, conlocatus  V (1st) TRANS   [XXXAO]  
+place/put/set in order/proper position, arrange; station, post, position; apply
+put together, assemble; settle/establish in a place/marriage; billet; lie down;
+
+
+=>
+Word mod inp/imp     
+An initial 'inp' may be rendered by 'imp'
+imper.ator           V      1 1 FUT  PASSIVE IMP 2 S    
+imper.ator           V      1 1 FUT  PASSIVE IMP 3 S    
+impero, imperare, imperavi, imperatus  V (1st)   [XXXAX]  
+order, command, levy; rule (over) (w/DAT);
+imperator            N      3 1 NOM S M                 
+imperator            N      3 1 VOC S M                 
+imperator, imperatoris  N (3rd) M   [XXXAX]  
+emperor; general; ruler; commander (-in-chief);
+
+
+=>
+Word mod nun/non     
+An initial 'nun' may be rendered by 'non'
+nonne                ADV    POS                         
+nonne  ADV   [XXXBX]  
+not? (interog, expects the answer "Yes");
+
+

@@ -1,0 +1,50 @@
+Word mod ae/e        
+An internal 'ae' might be rendered by 'e'
+femin.a              N      3 2 NOM P N                 
+femin.a              N      3 2 VOC P N                 
+femin.a              N      3 2 ACC P N                 
+femen, feminis  N (3rd) N   [XBXCO]  
+thigh (human/animal); flat vertical band on triglyph; [~ bubulum => plant];
+femin.a              N      1 1 NOM S F                 
+femin.a              N      1 1 VOC S F                 
+femin.a              N      1 1 ABL S F                 
+femina, feminae  N (1st) F   [XXXAX]  
+woman; female;
+femin.a              ADJ    1 1 NOM S F POS             
+femin.a              ADJ    1 1 VOC S F POS             
+femin.a              ADJ    1 1 ABL S F POS             
+femin.a              ADJ    1 1 NOM P N POS             
+femin.a              ADJ    1 1 VOC P N POS             
+femin.a              ADJ    1 1 ACC P N POS             
+feminus, femina, feminum  ADJ   [XXXEE]    uncommon
+female;
+femin.a              N      3 2 NOM P N                 
+femin.a              N      3 2 VOC P N                 
+femin.a              N      3 2 ACC P N                 
+femur, feminis  N (3rd) N   [XBXBO]  
+thigh (human/animal); flat vertical band on triglyph; [~ bubulum => plant];
+
+
+=>
+Word mod oe/e        
+An internal 'oe' might be rendered by 'e'
+felix                ADJ    3 1 NOM S X POS             
+felix                ADJ    3 1 VOC S X POS             
+felix                ADJ    3 1 ACC S N POS             
+felix, felicis (gen.), felicior -or -us, felicissimus -a -um  ADJ   [XXXAX]  
+happy; blessed; fertile; favorable; lucky; successful, fruitful;
+
+
+=>
+Word mod h/          
+An internal 'h' might be rendered by ''
+ull.a                ADJ    1 3 NOM S F POS             
+ull.a                ADJ    1 3 VOC S F POS             
+ull.a                ADJ    1 3 ABL S F POS             
+ull.a                ADJ    1 3 NOM P N POS             
+ull.a                ADJ    1 3 VOC P N POS             
+ull.a                ADJ    1 3 ACC P N POS             
+ullus, ulla, ullum (gen -ius)  ADJ   [XXXAX]  
+any;
+
+

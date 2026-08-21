@@ -1,0 +1,23 @@
+Slur ob/o~           
+An initial 'ob' may be rendered by o~
+oppon.o              V      3 1 PRES ACTIVE  IND 1 S    
+oppono, opponere, opposui, oppositus  V (3rd)   [XXXBX]  
+oppose; place opposite;
+
+
+=>
+Slur sub/su~         
+An initial 'sub' may be rendered by su~
+succed.o             V      3 1 PRES ACTIVE  IND 1 S    
+succedo, succedere, successi, successus  V (3rd)   [XXXBX]  
+climb; advance; follow; succeed in;
+
+
+=>
+Slur sub/su~         
+An initial 'sub' may be rendered by su~
+suppon.o             V      3 1 PRES ACTIVE  IND 1 S    
+suppono, supponere, supposui, suppositus  V (3rd)   [XXXBX]  
+place under; substitute; suppose;
+
+

@@ -1,0 +1,35 @@
+Word mod y/i         
+An initial 'y' may have replaced usual 'i'
+imago                N      3 1 NOM S F                 
+imago                N      3 1 VOC S F                 
+imago, imaginis  N (3rd) F   [XXXAX]  
+likeness, image, appearance; statue; idea; echo; ghost, phantom;
+
+
+=>
+Word mod pre/prae    
+An initial 'pre' may be rendered by 'prae'
+praes.um             V      5 1 PRES ACTIVE  IND 1 S    
+praesum, praeesse, praefui, praefuturus  V   [XXXBX]  
+be in charge/control/head (of) (w/DAT); take the lead (in); be present (at);
+Syncope   s => vis   
+
+praevis.um           VPAR   2 1 NOM S N PERF PASSIVE PPL
+praevis.um           VPAR   2 1 VOC S N PERF PASSIVE PPL
+praevis.um           VPAR   2 1 ACC S M PERF PASSIVE PPL
+praevis.um           VPAR   2 1 ACC S N PERF PASSIVE PPL
+praevideo, praevidere, praevidi, praevisus  V (2nd)   [XXXDX]    lesser
+praevis.um           SUPINE 2 1 ACC S N                 
+foresee, see in advance;
+*
+
+=>
+Word mod ph/f        
+An initial 'ph' may have replaced usual 'f'
+fam.a                N      1 1 NOM S F                 
+fam.a                N      1 1 VOC S F                 
+fam.a                N      1 1 ABL S F                 
+fama, famae  N (1st) F   [XXXAX]  
+rumor; reputation; tradition; fame, public opinion, ill repute; report, news;
+
+
